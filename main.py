@@ -139,9 +139,7 @@ def options_while_play():
     options_paused = not options_paused
 
     screen = SCREEN
-    surface = pygame.Surface((screen_width, screen_height), pygame.SRCALPHA)
-    pygame.draw.rect(surface, (255, 255, 255, 150), [0, 0, screen_width, screen_height])
-    screen.blit(surface, (0, 0))
+    SCREEN.blit(OPTIONS_WHILE_PLAYING_SCREEN, (0, 0))
 
 
 
