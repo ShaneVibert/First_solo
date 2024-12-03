@@ -3,6 +3,7 @@ import os
 from button import Button
 from constants import *
 from player import Player
+from weapon import Weapon
 
 pygame.display.set_caption("Menu")
 game_paused = False
@@ -15,9 +16,7 @@ def pause():
     global game_paused
     game_paused = not game_paused
     screen = SCREEN
-    surface = pygame.Surface((screen_width, screen_height), pygame.SRCALPHA)
-    pygame.draw.rect(surface, (128, 128, 128, 150), [0, 0, screen_width, screen_height])
-    screen.blit(surface, (0, 0))
+    screen.blit(PAUSE_SCREEN, (0, 0))
 
 
 
@@ -36,6 +35,7 @@ def play():
     screen = SCREEN
     clock = pygame.time.Clock()
     player = Player(screen_width / 2, screen_height / 2)
+    weapon = Weapon(player)
     dt = 0
     elapsed_seconds = 0
 
@@ -59,6 +59,7 @@ def play():
 
             SCREEN.blit(FARMLAND, (0, 0))
             player.draw(screen)
+            weapon.draw(screen, player)
 
             elapsed_time = int(elapsed_seconds)
             font = pygame.font.Font(None, 72)
@@ -68,6 +69,9 @@ def play():
 
 
         if game_paused:
+
+            dt = 0
+
             PAUSE_MOUSE_POS = pygame.mouse.get_pos()
 
             SURE_TEXT = Button(image=None, pos=(screen_width / 2, screen_height / 7),

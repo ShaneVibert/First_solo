@@ -38,6 +38,9 @@ FARMLAND = pygame.transform.scale(FARM, (screen_width, screen_height))
 APPLE = pygame.image.load("assets/CANNABLIST_APPLE.png")
 OPTIONS_WHILE_PLAYING_SCREEN = pygame.transform.scale(APPLE, (screen_width, screen_height))
 
+POTATO = pygame.image.load("assets/POTATO.png")
+PAUSE_SCREEN = pygame.transform.scale(POTATO, (screen_width, screen_height))
+
 def get_font(size):
     return pygame.font.Font("assets/font.ttf", size)
 
